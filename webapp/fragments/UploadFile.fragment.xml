@@ -1,0 +1,138 @@
+<core:FragmentDefinition xmlns:upload="sap.m.upload" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:u="sap.ui.unified">
+    <Dialog  contentWidth="100%" horizontalScrolling="false" draggable="false" xmlns:t="sap.ui.table"  >
+        <content>
+      <layout:Grid defaultSpan="XL12 L12 M12 S12">
+     
+    <t:Table id="idTable"  rows="{appModel>/aMassUpload}" visibleRowCount="5" class="sapUiResponsiveContentPadding"
+      rowSelectionChange="onTableRecordSelect" selectionMode="None" 
+      >
+     
+     
+      <t:columns>
+       <t:Column width="15rem">
+        <Label text="Title ID"/>
+        <t:template>
+         <Input value="{appModel>TITLE_ID}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="First Name"/>
+        <t:template>
+         <Input value="{appModel>FIRST_NAME}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Last Name"/>
+        <t:template>
+         <Input value="{appModel>LAST_NAME}"></Input>
+        </t:template>
+       </t:Column>
+        <t:Column width="15rem">
+        <Label text="User Type"/>
+        <t:template>
+         <Input value="{appModel>USER_TYPE}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Email Id"/>
+        <t:template>
+         <Input value="{appModel>EMAIL_ID}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Address Line 1"/>
+        <t:template>
+         <Input value="{appModel>ADDRESS_LINE_1}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Address Line 2"/>
+        <t:template>
+         <Input value="{appModel>ADDRESS_LINE_2}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Address Line 3"/>
+        <t:template>
+         <Input value="{appModel>ADDRESS_LINE_3}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="City"/>
+        <t:template>
+         <Input value="{appModel>CITY}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="State"/>
+        <t:template>
+         <Input value="{appModel>STATE}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Postal Code"/>
+        <t:template>
+         <Input value="{appModel>POSTAL_CODE}"></Input>
+        </t:template>
+       </t:Column>
+        <t:Column width="15rem">
+        <Label text="Country Code"/>
+        <t:template>
+         <Input value="{appModel>COUNTRY_CODE}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Phone Number"/>
+        <t:template>
+         <Input value="{appModel>PHONE_NUMBER}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Fax Number"/>
+        <t:template>
+         <Input value="{appModel>FAX_NUMBER}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Ext Number"/>
+        <t:template>
+         <Input value="{appModel>EXT_NUMBER}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Phone Country Code"/>
+        <t:template>
+         <Input value="{appModel>PH_COUNTRY_CODE}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Alternate Phone Country Code"/>
+        <t:template>
+         <Input value="{appModel>ALT_PH_COUNTRY_CODE}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Alternate Phone Number"/>
+        <t:template>
+         <Input value="{appModel>ALT_PHN_NUMBER}"></Input>
+        </t:template>
+       </t:Column>
+       <t:Column width="15rem">
+        <Label text="Tele Fax Number"/>
+        <t:template>
+         <Input value="{appModel>TELE_FAX_NUMBER}"></Input>
+        </t:template>
+       </t:Column>
+    
+      </t:columns>
+     </t:Table>
+	
+	 </layout:Grid>
+        </content>
+       
+        <buttons>
+            <Button type="Emphasized" text="Submit" press="OnSubmitUpload" />
+            <Button text="Cancel" press="onCancelUpload" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

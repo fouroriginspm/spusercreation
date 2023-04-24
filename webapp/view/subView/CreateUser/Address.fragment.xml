@@ -1,0 +1,95 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+    <!-- <Panel backgroundDesign="Solid"> -->
+        <layout:Grid defaultSpan="XL6 L6 M12 S12">
+         
+            <VBox>
+                <Label required="true" text="{i18n>AddressLine1}" design="Bold" />
+                <TextArea rows="3" id="txtAreaAddressLine_1" value="{appModel>/detailItem/ADDRESS/ADDRESS_LINE_1}" width="100%" visible="{=${appModel>/action} === 'Display' ? false : true}"/>
+                <Text text="{appModel>/detailItem/ADDRESS/ADDRESS_LINE_1}" visible="{=${appModel>/action} === 'Display' ? true : false}" />
+                <layoutData>
+                    <layout:GridData span="XL12 L12 M12 S12" />
+                </layoutData>
+            </VBox>
+            <VBox>
+                <Label text="{i18n>AddressLine2}" design="Bold" />
+                <TextArea rows="3" value="{appModel>/detailItem/ADDRESS/ADDRESS_LINE_2}" width="100%" visible="{=${appModel>/action} === 'Display' ? false : true}"/>
+                <Text text="{appModel>/detailItem/ADDRESS/ADDRESS_LINE_2}" visible="{=${appModel>/action} === 'Display' ? true : false}" />
+                <layoutData>
+                    <layout:GridData span="XL12 L12 M12 S12" />
+                </layoutData>
+            </VBox>
+            <VBox>
+                <Label text="{i18n>AddressLine3}" design="Bold" />
+                <TextArea rows="3" value="{appModel>/detailItem/ADDRESS/ADDRESS_LINE_3}" width="100%" visible="{=${appModel>/action} === 'Display' ? false : true}"/>
+                <Text text="{appModel>/detailItem/ADDRESS/ADDRESS_LINE_3}" visible="{=${appModel>/action} === 'Display' ? true : false}" />
+                <layoutData>
+                    <layout:GridData span="XL12 L12 M12 S12" />
+                </layoutData>
+            </VBox>
+           <VBox>
+            <Label required="true" text="{i18n>Country}" design="Bold" />
+            <ComboBox  id = "cmbCountry" width="100%" items="{appModel>/state}"
+             selectedKey="{appModel>/detailItem/ADDRESS/COUNTRY_CODE}" 
+             visible="{=${appModel>/action} === 'Display' ? false : true}">
+                <core:ListItem text="{appModel>COUNTRY_CODE}" key="{appModel>COUNTRY_CODE}" />
+            </ComboBox>
+            <Text text="{appModel>/detailItem/ADDRESS/COUNTRY_CODE}" visible="{=${appModel>/action} === 'Display' ? true : false}" />
+            <layoutData>
+                <layout:GridData span="XL1 L6 M12 S12" />
+            </layoutData>
+        </VBox>
+        <VBox>
+            <Label text="{i18n>STATE}" design="Bold" />
+            <ComboBox id = "cmbState" width="100%" items="{appModel>/state}"
+             selectedKey="{appModel>/detailItem/ADDRESS/STATE}" 
+             visible="{=${appModel>/action} === 'Display' ? false : true}">
+                <core:ListItem text="{appModel>STATE_NAME}" key="{appModel>STATE}" />
+            </ComboBox>
+            <Text text="{appModel>/detailItem/ADDRESS/STATE}" visible="{=${appModel>/action} === 'Display' ? true : false}" />
+            <layoutData>
+                <layout:GridData span="XL5 L6 M12 S12" />
+            </layoutData>
+        </VBox>
+          
+            <VBox>
+                <Label text="{i18n>City}" design="Bold" />
+                <Input value="{appModel>/detailItem/ADDRESS/CITY}"  visible="{=${appModel>/action} === 'Display' ? false : true}"/>
+                <Text text="{appModel>/detailItem/ADDRESS/CITY}" visible="{=${appModel>/action} === 'Display' ? true : false}" />
+                <layoutData>
+                    <layout:GridData span="XL6 L6 M12 S12" />
+                </layoutData>
+            </VBox>
+            <VBox>
+                <Label required="true" text="{i18n>PostalCode}" design="Bold" />
+                <Input id="inpPostalCode" visible="{=${appModel>/action} === 'Display' ? false : true}" type="Number" value="{appModel>/detailItem/ADDRESS/POSTAL_CODE}" />
+                <Text text="{appModel>/detailItem/ADDRESS/POSTAL_CODE}" visible="{=${appModel>/action} === 'Display' ? true : false}"/>
+                <layoutData>
+                    <layout:GridData span="XL6 L6 M12 S12" />
+                </layoutData>
+            </VBox>
+            <VBox>
+                <Label required="true" text="{i18n>EffectiveStartDate}" design="Bold" />
+                <DatePicker id="dtEffectiveStartDate" visible="{=${appModel>/action} === 'Display' ? false : true}" value="{path:'appModel>/detailItem/ADDRESS/VALID_FROM',type:'sap.ui.model.type.Date',formatOptions:{strictParsing:true,UTC:true,patter:'dd/MM/yyyy'}}" valueFormat="yyyy-MM-dd" />
+                <Text visible="{=${appModel>/action} === 'Display' ? true : false}" text="{path:'appModel>/detailItem/ADDRESS/VALID_FROM ',type:'sap.ui.model.type.Date',formatOptions:{strictParsing:true,UTC:true,patter:'dd/MM/yyyy'}} " />
+                <layoutData>
+                    <layout:GridData span="XL6 L6 M12 S12" />
+                </layoutData>
+            </VBox>
+            <VBox>
+                <Label text="{i18n>EffectiveEndDate}" design="Bold" />
+                <DatePicker visible="{=${appModel>/action} === 'Display' ? false : true}" enabled = "{=!${appModel>/detailItem/NON_EXPIRED}}"  value="{path:'appModel>/detailItem/ADDRESS/VALID_TO',type:'sap.ui.model.type.Date',formatOptions:{strictParsing:true,UTC:true,patter:'dd/MM/yyyy'}}" valueFormat="yyyy-MM-dd" />
+                <Text visible="{=${appModel>/action} === 'Display' ? true : false}" text="{path:'appModel>/detailItem/ADDRESS/VALID_TO',type:'sap.ui.model.type.Date',formatOptions:{strictParsing:true,UTC:true,patter:'dd/MM/yyyy'}}" />
+                <layoutData>
+                    <layout:GridData span="XL6 L6 M12 S12" />
+                </layoutData>
+            </VBox>
+            <VBox>
+                <Label text="{i18n>NonExpired}" design="Bold" />
+                <CheckBox selected="{appModel>/detailItem/NON_EXPIRED}" editable="{=!${viewModel>/bDisplay}}"/>
+                <layoutData>
+                    <layout:GridData span="XL6 L6 M12 S12" />
+                </layoutData>
+            </VBox>
+        </layout:Grid>
+    <!-- </Panel> -->
+</core:FragmentDefinition>

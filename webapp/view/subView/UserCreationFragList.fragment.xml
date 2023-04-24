@@ -1,0 +1,86 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+    
+    <Table id="tbUserTable" width="auto" mode="None" items="{appModel>/items}" sticky="HeaderToolbar,ColumnHeaders" noDataText="{i18n>noData}" growing="true" growingScrollToLoad="true" growingThreshold="20" updateFinished="onUpdateFinished">
+        <headerToolbar>
+            <Toolbar>
+                <Title text="{worklistView>/worklistTableTitle}" />
+                <ToolbarSpacer />
+                <Button  icon="sap-icon://add-document" visible="{worklistView>/CreateVisible}" text="{i18n>BtnCreateNew}" type="Emphasized" press="onPressCreate" />
+               
+                <u:FileUploader
+                    id="fileUploader"
+                    name="myFileUpload"
+                    change="handleUploadPress"
+                    typeMissmatch="handleTypeMissmatch"
+                    style="Emphasized"
+                    fileType="xls,xlsx"
+                    buttonOnly="true"
+                    buttonText="Upload"
+                    placeholder="Choose a file for Upload..."
+                    icon="sap-icon://upload"
+                />
+                <Button icon="sap-icon://download" text="Download" tooltip="download" type="Emphasized" press="onDownload" />
+                <Button icon="sap-icon://sort" text="{i18n>Sort}" tooltip="Sort" type="Emphasized" press="onSort"/>
+            </Toolbar>
+        </headerToolbar>
+        <columns>
+            <Column hAlign="Center">
+                <Text text="{i18n>UserId}" />
+            </Column>
+             <Column hAlign="Center">
+                <Text text="{i18n>FirstName}" />
+            </Column>
+            <Column hAlign="Center">
+                <Text text="{i18n>LastName}" />
+            </Column>
+            <Column hAlign="Center">
+                <Text text="{i18n>EmailId}" />
+            </Column>
+            
+           
+             <Column hAlign="Center">
+                <Text text="{i18n>ValidFrom}" />
+            </Column>
+            <Column hAlign="Center">
+                <Text text="{i18n>ValidTo}" />
+            </Column>
+            <Column width="12rem" hAlign="End" popinDisplay="Inline">
+                <Text />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem   vAlign="Middle">
+           
+                <cells>
+                    <ObjectIdentifier title="{appModel>USER_ID}"/>
+                    <Text text="{appModel>FIRST_NAME}" />
+                    <Text text="{appModel>LAST_NAME}" />
+                    <Text text="{appModel>EMAIL_ID}" />
+                    
+                    
+                    <!-- <Text text="{ 
+                                    path:'appModel>VALID_FROM', 
+                                    type:'sap.ui.model.type.Date',
+                                    formatOptions:{
+                                                    source:{
+                                                        pattern: 'yyyy-MM-ddTHH:mm:ss.SSSX'
+                                                    },
+                                                        pattern: 'dd/MM/yyyy'
+                                                }}" /> -->
+                    <Text text="{appModel>VALID_FROM}" />
+                    <Text text="{appModel>VALID_TO}" />
+                    
+                    <HBox wrap="Wrap" alignItems="End">
+                       
+                        <core:Icon src="sap-icon://display" tooltip="{i18n>display}" press="onPressDisplay" class="sapUiTinyMargin" /> 
+                        <core:Icon src="sap-icon://edit" tooltip="{i18n>Edit}" press="onPressEdit" class="sapUiTinyMargin" />
+                        <core:Icon src="sap-icon://delete" tooltip="{i18n>Delete}" press="onDeleteListItem" class="sapUiTinyMargin" />
+                   
+                   
+                    </HBox>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    
+</core:FragmentDefinition>

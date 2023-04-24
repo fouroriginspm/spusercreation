@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:filterbar="sap.ui.comp.filterbar">
+    <filterbar:FilterBar persistencyKey="myPersKey" useToolbar="false" showClearOnFB="true" clear="onClear" search="onSearch" reset="onReset">
+        <filterbar:filterGroupItems>
+            <filterbar:FilterGroupItem groupName="G1" name="EntityId" groupTitle="{i18n>LblFILTER}" label="{i18n>UserId}" labelTooltip="{i18n>UserId}" visibleInFilterBar="true">
+                <filterbar:control>
+                	<MultiInput id="userInput" tokens="{appModel>/oUserTokens}" valueHelpOnly="true" tokenUpdate="onTokenUpdate($event, 'Agency')"
+								valueHelpRequest="onValueHelpRequest"  suggestionItems="{appModel>/items}">
+								<tokens>
+									<Token key="{appModel>USER_ID}" text="{appModel>USER_ID}" editable="false"/>
+								</tokens>
+                                   <suggestionItems>
+                            <core:Item text="{appModel>USER_ID}" />
+                        </suggestionItems>
+							</MultiInput>
+                </filterbar:control>
+            </filterbar:FilterGroupItem>
+             
+             <filterbar:FilterGroupItem groupName="G1" name="firstName" groupTitle="{i18n>LblFILTER}" label="{i18n>FirstName}" labelTooltip="{i18n>FirstName}" visibleInFilterBar="true">
+                <filterbar:control>
+                    <Input id="fbFirstName"/>
+                </filterbar:control>
+            </filterbar:FilterGroupItem>
+            <filterbar:FilterGroupItem groupName="G1" name="lastName" groupTitle="{i18n>LblFILTER}" label="{i18n>LastName}" labelTooltip="{i18n>LastName}" visibleInFilterBar="false">
+                <filterbar:control>
+                    <Input id="fbLastName"/>
+                </filterbar:control>
+            </filterbar:FilterGroupItem>
+            <filterbar:FilterGroupItem groupName="G1" name="EmailId" groupTitle="{i18n>LblFILTER}" label="{i18n>EmailId}" labelTooltip="{i18n>EmailId}" visibleInFilterBar="true">
+                <filterbar:control>
+                    <Input id="fbEmailId"/>
+                </filterbar:control>
+            </filterbar:FilterGroupItem>
+        </filterbar:filterGroupItems>
+    </filterbar:FilterBar>
+</core:FragmentDefinition>

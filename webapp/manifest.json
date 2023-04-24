@@ -1,0 +1,173 @@
+{
+  "_version": "1.45.0",
+  "sap.app": {
+    "id": "usermanagement.usercreation",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.8.0",
+      "toolsId": "7222bbdd-cecd-46b7-9187-c38ce1850b5d"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.108.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "usermanagement.usercreation.i18n.i18n"
+        }
+      },
+      "appModel":{
+        "type":"sap.ui.model.json.JSONModel"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "usermanagement.usercreation.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteOverview",
+          "pattern": ":?query:",
+          "target": [
+            "TargetOverview"
+          ]
+        },
+        {
+					"pattern": "",
+					"name": "ManageUser",
+					"target": [
+						"ManageUser"
+					]
+				},
+        {
+					"pattern": "displayuser/{userId}",
+					"name": "displayuser",
+					"target": [
+						"createuser"
+					]
+				},
+        {
+					"pattern": "edituser/{userId}",
+					"name": "edituser",
+					"target": [
+						"createuser"
+					]
+				},
+        {
+					"pattern": "copyuser",
+					"name": "copyuser",
+					"target": [
+						"createuser"
+					]
+				},
+        {
+					"pattern": "roleassignment",
+					"name": "roleassignment",
+					"target": [
+						"createuser"
+					]
+				},
+        {
+					"pattern": "createuser",
+					"name": "createuser",
+					"target": [
+						"createuser"
+					]
+				}
+      ],
+      "targets": {
+        "TargetOverview": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Overview",
+          "viewName": "Overview"
+        },
+        "ManageUser": {
+					"viewType": "XML",
+					"viewName": "Overview",
+					"viewId": "Overview",
+					"title": "{i18n>appTitle}"
+				},
+        "createuser": {
+					"viewType": "XML",
+					"viewName": "CreateUser",
+					"viewId": "CreateUser",
+					"title": "{i18n>appTitle}"
+				}
+      }
+    },
+    "rootView": {
+      "viewName": "usermanagement.usercreation.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

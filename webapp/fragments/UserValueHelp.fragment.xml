@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="selectDialog"
+		title="Select User"
+		items="{appModel>/items}"
+		search=".onValueHelpSearch"
+		confirm=".onValueHelpClose"
+        multiSelect="true"
+		cancel=".onValueHelpClose">
+		<StandardListItem
+			title="{appModel>USER_ID}"
+			description="{appModel>EMAIL_ID}"/>
+			
+			
+	</SelectDialog>
+</core:FragmentDefinition>
