@@ -174,83 +174,68 @@ sap.ui.define([
     },
     _fnCreateUserUiControl: function(){
         return {
-            "Address" : {
-                "AddressLine1":{
-                    "Required": true,
-                    "Visible": true,
-                    "Editable": true,
-                    "Picklist": true,
-                    "MaxLength": 200,
-                    "ValueState":"None",
-                    "ValueStateText":""
-                }
+            "Required":{
+                "AddressLine1" : true,
+                "Title":true,
+                "FirstName":true,
+                "LastName":true,
+                "MiddleName": true,
+                "EmailId": true,
+                "UserType": true
             },
-            "BasicInformation":{
-                "Title" : {
-                    "Required": false,
-                    "Visible": true,
-                    "Editable": true,
-                    "Picklist": true,
-                    "MaxLength": 0,
-                    "ValueState":"None",
-                    "ValueStateText":""
-                },
-                "FirstName":{
-                    "Required": true,
-                    "Visible": true,
-                    "Editable": true,
-                    "Picklist": false,
-                    "MaxLength": 200,
-                    "ValueState":"None",
-                    "ValueStateText":"Pankaj its required"
-                },
-                "LastName":{
-                    "Required": true,
-                    "Visible": true,
-                    "Editable": true,
-                    "Picklist": false,
-                    "MaxLength": 200,
-                    "ValueState":"None",
-                    "ValueStateText":""
-                },
-                "MiddleName":{
-                    "Required": false,
-                    "Visible": true,
-                    "Editable": true,
-                    "Picklist": false,
-                    "MaxLength": 100,
-                    "ValueState":"None",
-                    "ValueStateText":""
-                },
-                "EmailId":{
-                    "Required": true,
-                    "Visible": true,
-                    "Editable": true,
-                    "Picklist": false,
-                    "MaxLength": 256,
-                    "ValueState":"None",
-                    "ValueStateText":""
-                },
-                "UserType":{
-                    "Required": true,
-                    "Visible": true,
-                    "Editable": true,
-                    "Picklist": true,
-                    "MaxLength": 0,
-                    "ValueState":"None",
-                    "ValueStateText":""
-                }
+            "Visible":{
+                "AddressLine1" : true,
+                "Title":true,
+                "FirstName":true,
+                "LastName":true,
+                "MiddleName": true,
+                "EmailId": true,
+                "UserType": true
             },
-            "ContactInformation":{
-                "ExtNumber":{
-                    "Required": true,
-                    "Visible": true,
-                    "Editable": true,
-                    "Picklist": true,
-                    "MaxLength": 0,
-                    "ValueState":"None",
-                    "ValueStateText":""
-                }
+            "Editable":{
+                "AddressLine1" : true,
+                "Title":true,
+                "FirstName":true,
+                "LastName":true,
+                "MiddleName": true,
+                "EmailId": true,
+                "UserType": true
+            },
+            "Picklist":{
+                "AddressLine1" : true,
+                "Title":true,
+                "FirstName":true,
+                "LastName":true,
+                "MiddleName": true,
+                "EmailId": true,
+                "UserType": true
+            },
+            "MaxLength":{
+                "AddressLine1" : 200,
+                "Title":10,
+                "FirstName":5,
+                "LastName":8,
+                "MiddleName": 200,
+                "EmailId": 200,
+                "UserType": 20
+            },
+            "ValueState":{
+                "AddressLine1" : "None",
+                "Title":"None",
+                "FirstName":"None",
+                "LastName":"None",
+                "MiddleName": "None",
+                "EmailId": "None",
+                "UserType": "None"
+            },
+            "ValueStateText":{
+                "AddressLine1" : "None",
+                "Title":"None",
+                "FirstName":"None",
+                "LastName":"None",
+                "MiddleName": "None",
+                "EmailId": "None",
+                "UserType": "None"
             }
         }
     }

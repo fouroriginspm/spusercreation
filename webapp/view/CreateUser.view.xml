@@ -36,6 +36,8 @@
                 </sections>
                 <footer>
                     <m:OverflowToolbar>
+                    <m:Button type="{= ${AppModel>/Validation/}.length > 0 ? 'Reject' : 'Accept'}" icon="sap-icon://message-error"
+										text="Error {= ${MessageModel>/Validation/}.length }" press="handleMessagePopoverPress"/>
                         <m:Button text="Cancel" press="onBack" />
                         <m:ToolbarSpacer />
                         <m:Button type="Emphasized" text="{=(${appModel>/action} === 'Edit')?'Update':'Submit'}" press="onSubmitDetails($event,${appModel>/action} === 'Edit')" visible="{=${appModel>/action} === 'Display' ? false : true}"/>

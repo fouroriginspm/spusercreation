@@ -14,8 +14,8 @@
         </VBox>
         <VBox>
             <Label labelFor="inpUserCreationBasicInformationFirstName" text="{i18n>FirstName}" design="Bold" />
-            <Input id="inpUserCreationBasicInformationFirstName"  maxLength="{appModel>/createUiControl/BasicInformation/FirstName/MaxLength}" valueStateText="{appModel>/createUiControl/BasicInformation/FirstName/ValueStateText}" valueState="{appModel>/createUiControl/BasicInformation/FirstName/ValueState}"
-             editable="{appModel>/createUiControl/BasicInformation/FirstName/Editable}" required="{appModel>/createUiControl/BasicInformation/FirstName/Required}" value="{appModel>/detailItem/FIRST_NAME}" visible="{=${appModel>/action} === 'Display' ? false : true}" />
+            <Input id="inpUserCreationBasicInformationFirstName"  maxLength="{appModel>/createUiControl/MaxLength/FirstName}" valueStateText="{appModel>/createUiControl/ValueStateText/FirstName}" valueState="{appModel>/createUiControl/ValueState/FirstName}"
+             editable="{appModel>/createUiControl/Editable/FirstName}" required="{appModel>/createUiControl/Required/FirstName}" value="{appModel>/detailItem/FIRST_NAME}" visible="{=${appModel>/action} === 'Display' ? false : true}" />
             <Text text="{appModel>/detailItem/FIRST_NAME}" visible="{=${appModel>/action} === 'Display' ? true : false}"  />
             <layoutData>
                 <layout:GridData span="XL6 L6 M12 S12" />
@@ -25,8 +25,8 @@
          <layout:Grid defaultSpan="XL12 L12 M12 S12">
         <VBox>
             <Label labelFor="inpUserCreationBasicInformationMiddleName" text="{i18n>MiddleName}" design="Bold" />
-            <Input id="inpUserCreationBasicInformationMiddleName"  maxLength="{appModel>/createUiControl/BasicInformation/MiddleName/MaxLength}" valueStateText="{appModel>/createUiControl/BasicInformation/MiddleName/ValueStateText}" valueState="{appModel>/createUiControl/BasicInformation/MiddleName/ValueState}"
-             editable="{appModel>/createUiControl/BasicInformation/MiddleName/Editable}" required="{appModel>/createUiControl/BasicInformation/MiddleName/Required}" value="{appModel>/detailItem/MIDDLE_NAME}" visible="{=${appModel>/action} === 'Display' ? false : true}" />
+            <Input id="inpUserCreationBasicInformationMiddleName"  maxLength="{appModel>/createUiControl/MaxLength/MiddleName}" valueStateText="{appModel>/createUiControl/ValueStateText/MiddleName}" valueState="{appModel>/createUiControl/ValueState/MiddleName}"
+             editable="{appModel>/createUiControl/Editable/MiddleName}" required="{appModel>/createUiControl/Required/MiddleName}" value="{appModel>/detailItem/MIDDLE_NAME}" visible="{=${appModel>/action} === 'Display' ? false : true}" />
             <Text text="{appModel>/detailItem/MIDDLE_NAME}" visible="{=${appModel>/action} === 'Display' ? true : false}" />
             <layoutData>
                 <layout:GridData span="XL6 L6 M12 S12" />
@@ -34,7 +34,8 @@
         </VBox>
         <VBox>
             <Label required="true" text="{i18n>LastName}" design="Bold" />
-            <Input id="inpLastName" value="{appModel>/detailItem/LAST_NAME}" visible="{=${appModel>/action} === 'Display' ? false : true}" />
+            <Input id="inpLastName" maxLength="{appModel>/createUiControl/MaxLength/LastName}" valueStateText="{appModel>/createUiControl/ValueStateText/LastName}" valueState="{appModel>/createUiControl/ValueState/LastName}"
+             editable="{appModel>/createUiControl/Editable/LastName}" required="{appModel>/createUiControl/Required/LastName}"  value="{appModel>/detailItem/LAST_NAME}" visible="{=${appModel>/action} === 'Display' ? false : true}" />
             <Text text="{appModel>/detailItem/LAST_NAME}" visible="{=${appModel>/action} === 'Display' ? true : false}" />
             <layoutData>
                 <layout:GridData span="XL6 L6 M12 S12" />

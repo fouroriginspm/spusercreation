@@ -9,12 +9,13 @@ sap.ui.define([
     "../model/models",
     "sap/m/ColumnListItem",
     "../utils/configuration",
-    "../utils/services"
+    "../utils/services",
+    "../utils/validation"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel, dataUtil, _Fragment, formatter, ajaxutil, _filterOpEnum, models, ColumnListItem, Configuration, Services) {
+    function (Controller, JSONModel, dataUtil, _Fragment, formatter, ajaxutil, _filterOpEnum, models, ColumnListItem, Configuration, Services,Validation) {
         "use strict";
 
         return Controller.extend("usermanagement.usercreation.controller.CreateUser", {
@@ -77,38 +78,49 @@ sap.ui.define([
                     this.AppModel.setProperty("/detailItem", response);
                 }.bind(this));
             },
-
+            getI18n: function (sTextField) {
+                var oResourceBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+                var i18nTextValue = oResourceBundle.getText(sTextField);
+                return i18nTextValue ? i18nTextValue : sTextField;
+            },
+            handleMessagePopoverPress: function (oEvt) {
+                var that = this;
+                var oMessagePopover = new sap.m.MessagePopover({
+                    items: {
+                        path: "AppModel>/Validation",
+                        template: new sap.m.MessageItem({
+                            title: "{AppModel>message}",
+                            subtitle: "{AppModel>sTitle}",
+                            groupName: "{AppModel>idx}",
+                            type: "{AppModel>type}",
+                            description: "{AppModel>message}",
+                            enabled: false,
+                        })
+                    },
+                    groupItems: true
+                });
+                oMessagePopover.setModel(this.AppModel,"AppModel");
+                oMessagePopover.openBy(oEvt.getSource());
+            },
             onSubmitDetails: function () {
                 var that = this;
-                var _firstName = this.byId("inpFirstName"),
-                    _firstNameValue = _firstName.getValue();
-                var _lastName = this.byId("inpLastName"),
-                    _lastNameValue = _lastName.getValue()
-                // var _emailId = this.byId("inpEmailId");
-                // var _userType = this.byId("cmbUserType");
-                // var _phoneCountryCode = this.byId("cmbPhCountryCode");
-                // var _phoneNo = this.byId("cmbPhoneNo");
-                // var _addressLine1 = this.byId("txtAreaAddressLine_1");
-                // var _country = this.byId("cmbCountry");
-                // var _state = this.byId("cmbState");
-                // var _postalCode = this.byId("inpPostalCode");
-                // var _effectiveStartDate = this.byId("dtEffectiveStartDate");
 
-                if (_firstNameValue === "" || _lastNameValue === "") {
-                    if (_firstNameValue === "" && _lastNameValue === "") {
-                        _firstName.setValueState("Error");
-                        _lastName.setValueState("Error");
-                    }else if (_firstNameValue !== "") {
-                        _firstName.setValueState("None");
-                    }else if(_lastNameValue !== ""){
-                        _lastName.setValueState("None");
+                
+                var aValidationError = [];
+                var oRequired =  this.AppModel.getProperty("/createUiControl/Required");
+                for(var property in oRequired){
+                    if(oRequired[property]){
+                        Validation.validate(property,this,aValidationError);
                     }
                 }
-
-
-
-
-
+                
+                
+                if(aValidationError.length){
+                    this.AppModel.setProperty("/Validation",aValidationError);
+                    MessageBox.error("Please provide correct information..!!");
+                    return;
+                }
+                return;
                 var requestPayload = this.AppModel.getProperty("/detailItem");
                 var cmbUserType = this.byId("cmbUserType");
                 if (cmbUserType.getSelectedItem()) {
